@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohannad Abuimeish | Computer Science Capstone ePortfolio</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --secondary: #0f172a;
+      --accent: #0ea5e9;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #334155;
+      --text-heading: #0f172a;
+      --border: #e2e8f0;
+      --tag-bg: #eff6ff;
+      --tag-text: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    /* Navigation */
+    header {
+      background-color: var(--secondary);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #93c5fd;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0f2fe;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.85rem;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-header p {
+      color: #64748b;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-category {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-light);
+    }
+
+    .btn-secondary {
+      background-color: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
+    }
+
+    /* Video Placeholder */
+    .video-box {
+      background: #0f172a;
+      color: white;
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+
+    .video-box h3 {
+      margin-bottom: 0.5rem;
+      color: #38bdf8;
+    }
+
+    .video-box p {
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+      font-size: 0.95rem;
+    }
+
+    /* Self Assessment Callout */
+    .assessment-box {
+      background: white;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .assessment-box h3 {
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+    }
+
+    footer {
+      background-color: var(--secondary);
+      color: #94a3b8;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #334155;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#" class="nav-brand">Mohannad <span>Abuimeish</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#code-review">Code Review</a></li>
+        <li><a href="#enhancements">Artifact Enhancements</a></li>
+        <li><a href="#self-assessment">Self-Assessment</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Computer Science Capstone ePortfolio</h1>
+      <p>A synthesis of Software Design, Algorithmic Principles, and Database Systems Engineering.</p>
+      <div class="badge-container">
+        <span class="badge">B.S. Computer Science</span>
+        <span class="badge">Southern New Hampshire University</span>
+        <span class="badge">Full-Stack & Systems Engineering</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <div class="section-header">
+        <h2>Professional Profile</h2>
+        <p>Introduction to academic journey, specialization goals, and capstone focus</p>
+      </div>
+      <div class="assessment-box">
+        <h3>Welcome to My Capstone ePortfolio</h3>
+        <p>
+          I am a software engineering candidate completing my Bachelor of Science in Computer Science at Southern New Hampshire University. 
+          Throughout my coursework and professional projects, I have developed expertise in architecting modular backend services, 
+          optimizing data structures for deterministic algorithmic efficiency, and building secure database systems.
+        </p>
+        <br>
+        <p>
+          This ePortfolio showcases the iterative enhancement of three core artifacts across the primary categories of computer science: 
+          <strong>Software Design and Engineering</strong>, <strong>Algorithms and Data Structures</strong>, and <strong>Databases</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Code Review Section -->
+    <section id="code-review">
+      <div class="section-header">
+        <h2>Milestone One: Informal Code Review</h2>
+        <p>Critical video walkthrough and vulnerability analysis of pre-enhanced source code</p>
+      </div>
+      <div class="video-box">
+        <h3>Code Review Walkthrough Presentation</h3>
+        <p>
+          A video presentation examining existing functionality, code quality, logic efficiency, and security vulnerabilities 
+          across the three original artifacts before planned enhancements.
+        </p>
+        <a href="#enhancements" class="btn">View Enhancement Plans</a>
+      </div>
+    </section>
+
+    <!-- Enhancements Grid -->
+    <section id="enhancements">
+      <div class="section-header">
+        <h2>Planned Artifact Enhancements</h2>
+        <p>Demonstrating technical mastery across key computer science domains</p>
+      </div>
+      
+      <div class="card-grid">
+        <!-- Enhancement 1 -->
+        <div class="card">
+          <div class="card-category">Category One</div>
+          <h3>Software Design & Engineering</h3>
+          <p>
+            <strong>Origin:</strong> CS 320 Software Testing & QA (Java Contact/Task Service)<br><br>
+            Refactoring monolithic, in-memory service classes into a decoupled, layered RESTful architecture adhering to Controller-Service-Repository patterns, 
+            GoF Builder/Factory creational patterns, and automated JUnit 5/Mockito test coverage.
+          </p>
+          <div class="tech-tags">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">RESTful API</span>
+            <span class="tech-tag">JUnit 5</span>
+            <span class="tech-tag">GoF Builder</span>
+          </div>
+          <span class="btn btn-secondary">Milestone Two</span>
+        </div>
+
+        <!-- Enhancement 2 -->
+        <div class="card">
+          <div class="card-category">Category Two</div>
+          <h3>Algorithms & Data Structures</h3>
+          <p>
+            <strong>Origin:</strong> CS 300 Data Structures (C++ Course Advising BST)<br><br>
+            Upgrading an unbalanced Binary Search Tree prone to $O(n)$ degradation into a self-balancing AVL Tree guaranteeing $O(\log n)$ search time, 
+            eliminating memory leaks via modern C++ smart pointers (RAII), and implementing microsecond benchmark profiling.
+          </p>
+          <div class="tech-tags">
+            <span class="tech-tag">C++20</span>
+            <span class="tech-tag">AVL Tree</span>
+            <span class="tech-tag">Big-O Optimization</span>
+            <span class="tech-tag">Smart Pointers</span>
+          </div>
+          <span class="btn btn-secondary">Milestone Three</span>
+        </div>
+
+        <!-- Enhancement 3 -->
+        <div class="card">
+          <div class="card-category">Category Three</div>
+          <h3>Databases</h3>
+          <p>
+            <strong>Origin:</strong> CS 340 Client/Server Development (MongoDB Grazioso Dashboard)<br><br>
+            Modernizing the data layer with environment-variable credential isolation, compound indexing to replace full collection scans (`COLLSCAN`), 
+            Pydantic schema validation, and server-side MongoDB Aggregation Pipelines.
+          </p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Aggregation Pipelines</span>
+            <span class="tech-tag">Compound Indexing</span>
+          </div>
+          <span class="btn btn-secondary">Milestone Four</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Self-Assessment -->
+    <section id="self-assessment">
+      <div class="section-header">
+        <h2>Professional Self-Assessment</h2>
+        <p>Comprehensive reflection on academic growth, technical strengths, and industry readiness</p>
+      </div>
+      <div class="assessment-box">
+        <h3>Capstone Synthesis (Module Seven)</h3>
+        <p>
+          The professional self-assessment serves as the comprehensive synthesis of my Computer Science degree, reflecting on team collaboration, 
+          stakeholder communication, algorithmic design decisions, database architecture, and cybersecurity principles.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Mohannad Abuimeish. All rights reserved.</p>
+    <p>CS 499: Computer Science Capstone | Southern New Hampshire University</p>
+  </footer>
+
+</body>
+</html>
